@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and local config. Never commit these.
+.env
+*.env
+secrets/
+*.key
+
+# Generated output (examples/ is curated and committed on purpose)
+reports/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

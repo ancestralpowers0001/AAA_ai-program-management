@@ -1,6 +1,6 @@
 # AI-Native Program Management
 
-**Ademola (Ade) Apata, PMP** | Defense NPI, program controls and EVM | Niagara Region, Ontario | [LinkedIn](https://www.linkedin.com/in/ademola-apata)
+**Ademola (Ade) Apata, P.Eng, PMP** | Defense NPI, program controls and EVM | Niagara Region, Ontario | [LinkedIn](https://www.linkedin.com/in/ademola-apata)
 
 Most program reviews spend twenty minutes on numbers and two minutes on what to do about them. I build small tools that flip that ratio. They take the raw data a program already has and turn it into a forecast and a decision a leader can act on.
 
@@ -36,7 +36,7 @@ A few outcomes behind these tools:
 
 Day to day that means building and running integrated master schedules, EVM, Oracle and SAP ERP, MS Project and Power BI, and making sure the numbers turn into decisions at the program review.
 
-**Credentials:** PMP. P.Eng licence in final processing with PEO (NPPE passed). Lean Six Sigma Green Belt. Controlled Goods Program security clearance (PSPC). Data and Predictive Analytics certificate (Toronto Metropolitan University). M.Eng Industrial Engineering (Concordia). B.A.Sc Chemical Engineering and Finance (University of Ottawa).
+**Credentials:** P.Eng (Professional Engineers Ontario). PMP. Lean Six Sigma Green Belt. Controlled Goods Program security clearance (PSPC). Data and Predictive Analytics certificate (Toronto Metropolitan University). M.Eng Industrial Engineering (Concordia). B.A.Sc Chemical Engineering and Finance (University of Ottawa).
 
 ## About the data
 

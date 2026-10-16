@@ -23,12 +23,15 @@ class Period:
     pv: float
     ev: float | None
     ac: float | None
+    milestone: str = ""
 
 
 def load_csv(path: str | Path) -> list[Period]:
-    """Read a CSV with columns period, pv, ev, ac. Values are cumulative.
+    """Read a CSV with columns period, pv, ev, ac and an optional milestone.
 
-    Future periods carry PV only (the baseline), with EV and AC left blank.
+    Values are cumulative. Future periods carry PV only (the baseline), with
+    EV and AC left blank. A milestone names the gate planned to finish in that
+    period (PDR, CDR, FAT and so on).
     """
     periods = []
     with open(path, newline="") as f:
@@ -39,6 +42,7 @@ def load_csv(path: str | Path) -> list[Period]:
                     pv=float(row["pv"]),
                     ev=float(row["ev"]) if row.get("ev") else None,
                     ac=float(row["ac"]) if row.get("ac") else None,
+                    milestone=(row.get("milestone") or "").strip(),
                 )
             )
     periods.sort(key=lambda p: p.period)
@@ -101,6 +105,14 @@ def compute(periods: list[Period], bac: float | None = None, status_period: int 
     eac_values = [v for v in eac.values() if v is not None]
 
     tcpi_bac = _div(bac - ev, bac - ac)
+
+    # Remaining gates: forecast = actual time + planned time still ahead / SPI(t).
+    # At the final period this equals the overall Earned Schedule forecast.
+    milestones = []
+    for p in periods:
+        if p.milestone and p.period > es and spi_t:
+            forecast = at + (p.period - es) / spi_t
+            milestones.append({"name": p.milestone, "planned": p.period, "forecast": forecast, "slip": forecast - p.period})
     trend = [
         {"period": p.period, "cpi": _div(p.ev, p.ac), "spi": _div(p.ev, p.pv)}
         for p in actuals
@@ -127,6 +139,7 @@ def compute(periods: list[Period], bac: float | None = None, status_period: int 
         "eac_high": max(eac_values),
         "tcpi_bac": tcpi_bac,
         "trend": trend,
+        "milestones": milestones,
     }
 
 
@@ -223,6 +236,16 @@ def render_markdown(r: dict, units: str = "$K", title: str = "EVM Status Report"
     for name, value in r["eac"].items():
         vac = r["bac"] - value if value is not None else None
         out.append(f"| {name} | {_fmt(value)} | {_fmt(vac)} | {when[name]} |")
+    if r["milestones"]:
+        out += [
+            "",
+            "## Upcoming gates (Earned Schedule forecast)",
+            "",
+            "| Gate | Planned period | Forecast period | Slip |",
+            "|---|---|---|---|",
+        ]
+        for m in r["milestones"]:
+            out.append(f"| {m['name']} | {m['planned']} | {m['forecast']:.1f} | {m['slip']:+.1f} |")
     out += ["", "## Trend", "", "| Period | CPI | SPI |", "|---|---|---|"]
     for t in r["trend"]:
         out.append(f"| {t['period']} | {_fmt(t['cpi'], '.2f')} | {_fmt(t['spi'], '.2f')} |")
@@ -284,6 +307,10 @@ def render_svg(periods: list[Period], r: dict, width: int = 720, height: int = 4
         s.append(f'<line x1="{pad_l + pw + 16}" x2="{pad_l + pw + 40}" y1="{ly}" y2="{ly}" stroke="{color}" stroke-width="2.5"{dash}/>')
         s.append(f'<text x="{pad_l + pw + 46}" y="{ly + 4}" fill="#1f2937">{label}</text>')
     s.append(f'<text x="{pad_l + pw + 16}" y="{pad_t + 110}" fill="#6b7280">dotted line = BAC</text>')
+    for p in periods:
+        if p.milestone:
+            s.append(f'<circle cx="{x(p.period):.1f}" cy="{y(p.pv):.1f}" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>')
+            s.append(f'<text x="{x(p.period) - 6:.1f}" y="{y(p.pv) - 8:.1f}" text-anchor="end" font-size="10" fill="#2563eb">{p.milestone}</text>')
     plan_end = len(periods)
     s.append(f'<line x1="{x(plan_end):.1f}" x2="{x(plan_end):.1f}" y1="{pad_t}" y2="{pad_t + ph}" stroke="#9ca3af" stroke-dasharray="2 3"/>')
     s.append(f'<text x="{x(plan_end) - 4:.1f}" y="{pad_t + 12}" text-anchor="end" fill="#6b7280">planned finish</text>')

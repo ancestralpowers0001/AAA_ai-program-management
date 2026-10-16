@@ -36,6 +36,15 @@ _Note: the program is 41% complete. Past about 20%, cumulative CPI historically 
 | current CPI continues | 5,403 | -603 | Cost performance to date is typical of what is left |
 | CPI x SPI pressure | 5,928 | -1,128 | There is pressure to recover the schedule, which usually costs more |
 
+## Upcoming gates (Earned Schedule forecast)
+
+| Gate | Planned period | Forecast period | Slip |
+|---|---|---|---|
+| Prototype | 10 | 11.2 | +1.2 |
+| Qualification | 14 | 15.7 | +1.7 |
+| FAT | 16 | 17.9 | +1.9 |
+| First delivery | 18 | 20.2 | +2.2 |
+
 ## Trend
 
 | Period | CPI | SPI |

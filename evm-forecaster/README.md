@@ -8,11 +8,22 @@
 2. Three EAC methods side by side, with when to trust each one
 3. A TCPI recovery check that calls out a recovery plan that won't happen
 4. An **Earned Schedule** finish date forecast, which stays accurate late in a program when classic SPI stops being useful
-5. An S-curve chart
+5. A slip forecast for every remaining gate (Prototype, Qualification, FAT, first delivery), because leadership asks about the next gate before they ask about the EAC
+6. An S-curve chart with the gates marked
+
+## The sample program
+
+[The sample](data/sample_program.csv) is a made-up 18-month defense electronics NPI program, gated the way these programs usually run: PDR, CDR, prototype build, qualification, FAT, first delivery. The numbers are invented. The pattern is one I have watched play out more than once:
+
+- A long-lead part arrives with a supplier non-conformance just before CDR. The rework eats margin quietly, because nobody re-plans around it.
+- ECO churn after CDR keeps engineering busy on changes instead of new work. AC keeps climbing while EV flattens.
+- Each monthly review says "we'll recover in the build phase." By month 9 the trend has been flat for six months and nobody has said the hard thing out loud.
+
+This is the moment the tool is built for.
 
 ## Sample output
 
-From [the synthetic sample program](data/sample_program.csv), an 18-month job at month 9:
+At month 9:
 
 > **Bottom line:** the program is over budget and behind schedule. At current performance it finishes +5% to +23% against budget and about 2.2 periods late.
 >
@@ -21,6 +32,15 @@ From [the synthetic sample program](data/sample_program.csv), an 18-month job at
 > **Ask:** stop reporting to the original budget. Approve a revised EAC in the range above and decide now whether to recover scope, schedule, or funding.
 
 ![EVM S-curve](examples/sample_chart.svg)
+
+| Gate | Planned | Forecast | Slip |
+|---|---|---|---|
+| Prototype | 10 | 11.2 | +1.2 |
+| Qualification | 14 | 15.7 | +1.7 |
+| FAT | 16 | 17.9 | +1.9 |
+| First delivery | 18 | 20.2 | +2.2 |
+
+The slip grows at every gate. That is the real message: this is not a single late part to chase down. It is a performance problem that compounds, and the FAT date the customer was given is already at risk.
 
 Full report: [examples/sample_report.md](examples/sample_report.md)
 
@@ -34,13 +54,13 @@ python evm_forecaster.py data/sample_program.csv --status-period 6 --out report.
 python -m unittest discover -s tests
 ```
 
-Input is a CSV with cumulative values per period. Future periods carry PV only:
+Input is a CSV with cumulative values per period. Future periods carry PV only. The milestone column is optional:
 
 ```csv
-period,pv,ev,ac
-1,120,110,118
-2,280,250,270
-3,480,,
+period,pv,ev,ac,milestone
+1,120,110,118,
+2,280,250,270,
+3,480,,,PDR
 ```
 
 ## The method, and why it matters
@@ -55,6 +75,7 @@ period,pv,ev,ac
 | Earned Schedule | Time at which today's EV was planned | Where the program really is in time, not in dollars. |
 | SPI(t) | ES / actual time | Schedule efficiency that does not drift to 1.00 near the end like classic SPI does. |
 | Forecast duration | Planned duration / SPI(t) | A finish date forecast built on performance, not optimism. |
+| Gate forecast | Time now + (gate period - ES) / SPI(t) | When each remaining gate will really land if performance holds. |
 
 ## What I would add next
 

@@ -52,6 +52,18 @@ class ComputeTests(unittest.TestCase):
         self.assertAlmostEqual(self.r["es"], 8 + 10 / 340)
         self.assertAlmostEqual(self.r["ieac_t"], 18 / (self.r["es"] / 9))
 
+    def test_milestone_forecasts(self):
+        names = [m["name"] for m in self.r["milestones"]]
+        self.assertEqual(names, ["Prototype", "Qualification", "FAT", "First delivery"])
+        last = self.r["milestones"][-1]
+        # The final gate forecast must agree with the overall Earned Schedule forecast
+        self.assertAlmostEqual(last["forecast"], self.r["ieac_t"])
+        self.assertTrue(all(m["slip"] > 0 for m in self.r["milestones"]))
+
+    def test_milestone_column_is_optional(self):
+        r = compute([Period(1, 100, 90, 95), Period(2, 200, None, None)])
+        self.assertEqual(r["milestones"], [])
+
     def test_status_period_override(self):
         r = compute(load_csv(SAMPLE), status_period=4)
         self.assertEqual(r["ev"], 640)

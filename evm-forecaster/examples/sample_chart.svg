@@ -34,6 +34,18 @@
 <line x1="586" x2="610" y1="116" y2="116" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
 <text x="616" y="120" fill="#1f2937">EAC forecast</text>
 <text x="586" y="150" fill="#6b7280">dotted line = BAC</text>
+<circle cx="136.3" cy="333.3" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="130.3" y="325.3" text-anchor="end" font-size="10" fill="#2563eb">PDR</text>
+<circle cx="208.6" cy="300.9" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="202.6" y="292.9" text-anchor="end" font-size="10" fill="#2563eb">CDR</text>
+<circle cx="305.0" cy="248.7" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="299.0" y="240.7" text-anchor="end" font-size="10" fill="#2563eb">Prototype</text>
+<circle cx="401.3" cy="203.0" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="395.3" y="195.0" text-anchor="end" font-size="10" fill="#2563eb">Qualification</text>
+<circle cx="449.5" cy="182.4" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="443.5" y="174.4" text-anchor="end" font-size="10" fill="#2563eb">FAT</text>
+<circle cx="497.7" cy="164.8" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="491.7" y="156.8" text-anchor="end" font-size="10" fill="#2563eb">First delivery</text>
 <line x1="497.7" x2="497.7" y1="40" y2="352" stroke="#9ca3af" stroke-dasharray="2 3"/>
 <text x="493.7" y="52" text-anchor="end" fill="#6b7280">planned finish</text>
 <circle cx="550.1" cy="141.3" r="4" fill="#dc2626"/>

@@ -34,6 +34,8 @@
 <line x1="586" x2="610" y1="116" y2="116" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
 <text x="616" y="120" fill="#1f2937">EAC forecast</text>
 <text x="586" y="150" fill="#6b7280">dotted line = BAC</text>
+<circle cx="88.1" cy="347.3" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+<text x="82.1" y="339.3" text-anchor="end" font-size="10" fill="#2563eb">Concept</text>
 <circle cx="136.3" cy="333.3" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
 <text x="130.3" y="325.3" text-anchor="end" font-size="10" fill="#2563eb">PDR</text>
 <circle cx="208.6" cy="300.9" r="3.5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>

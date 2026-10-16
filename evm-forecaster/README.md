@@ -13,7 +13,7 @@
 
 ## The sample program
 
-[The sample](data/sample_program.csv) is a made-up 18-month defense electronics NPI program, gated the way these programs usually run: PDR, CDR, prototype build, qualification, FAT, first delivery. The numbers are invented. The pattern is one I have watched play out more than once:
+[The sample](data/sample_program.csv) is a made-up 18-month defense electronics NPI program, gated the way these programs usually run: concept review, PDR, CDR, prototype build, qualification, FAT, first delivery. The numbers are invented. The pattern is one I have watched play out more than once:
 
 - A long-lead part arrives with a supplier non-conformance just before CDR. The rework eats margin quietly, because nobody re-plans around it.
 - ECO churn after CDR keeps engineering busy on changes instead of new work. AC keeps climbing while EV flattens.

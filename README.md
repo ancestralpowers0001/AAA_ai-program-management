@@ -1,6 +1,6 @@
 # AI-Native Program Management
 
-**Ademola (Ade) Apata, PMP** | Program controls and NPI in Canadian defense and aerospace | [LinkedIn](https://www.linkedin.com/in/ademola-apata)
+**Ademola (Ade) Apata, PMP** | Defense NPI, program controls and EVM | Niagara Region, Ontario | [LinkedIn](https://www.linkedin.com/in/ademola-apata)
 
 Most program reviews spend twenty minutes on numbers and two minutes on what to do about them. I build small tools that flip that ratio. They take the raw data a program already has and turn it into a forecast and a decision a leader can act on.
 
@@ -25,13 +25,18 @@ Everything here is something I have needed on real defense programs, rebuilt fro
 
 ## Background
 
-Program scheduling, project management and NPI across naval defense, manufacturing and industrial operations. A few outcomes behind these tools:
+Most of my career has been in the messy middle of NPI, where engineering, supply chain and the shop floor all have to land on the same date. Most recently I spent close to four years as Senior Program Scheduler and Project Manager at Curtiss-Wright Defense Solutions, running a naval defense program from contract award through production, FAT and delivery. Before that came manufacturing engineering and project delivery in metal fabrication, supply chain planning, and plant operations.
 
-- Cut FAT duration by 18% on a naval defense program with readiness checklists built around design-for-test thinking
+A few outcomes behind these tools:
+
+- Cut FAT duration by 18% with readiness checklists built around design-for-test thinking
 - Reduced lead time 15% using historical schedule data, with zero missed critical milestones
-- Took plant uptime from 81% to 93% using real-time SAP data
+- 100% on-time delivery across concurrent programs, while unplanned NPI costs came down 10%
+- Earlier in my career, took plant uptime from 81% to 93% using real-time SAP data
 
-PMP, Lean Six Sigma Green Belt, Controlled Goods Program registered. M.Eng Industrial Engineering (Concordia), B.A.Sc Chemical Engineering (University of Ottawa).
+Day to day that means building and running integrated master schedules, EVM, Oracle and SAP ERP, MS Project and Power BI, and making sure the numbers turn into decisions at the program review.
+
+**Credentials:** PMP. P.Eng licence in final processing with PEO (NPPE passed). Lean Six Sigma Green Belt. Controlled Goods Program security clearance (PSPC). Data and Predictive Analytics certificate (Toronto Metropolitan University). M.Eng Industrial Engineering (Concordia). B.A.Sc Chemical Engineering and Finance (University of Ottawa).
 
 ## About the data
 
